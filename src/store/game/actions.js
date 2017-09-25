@@ -9,6 +9,16 @@ export const resetGame = () => {
     }
 };
 
+// export const asyncAction = (text) => {
+//     return async(dispatch, getState) => {
+//         console.log(`getState() = ${getState()}`);
+//         const newText = await someAsyncfunction();
+//         dispatch({type: types.<ACTION_TYPE>, payload: newText})
+//     }
+// };
+
+
+
 const randomColor = () => {
     //pick a red from 0-255
     const r = Math.floor(Math.random() * 256);
@@ -17,7 +27,7 @@ const randomColor = () => {
     //pick a blue from 0-255
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`
-}
+};
 
 const generateRandomColors = (num) => {
     const arr = [];
@@ -28,10 +38,3 @@ const generateRandomColors = (num) => {
 };
 
 
-// export const asyncAction = (text) => {
-//     return async(dispatch, getState) => {
-//         console.log(`getState() = ${getState()}`);
-//         const newText = await someAsyncfunction();
-//         dispatch({type: types.<ACTION_TYPE>, payload: newText})
-//     }
-// };

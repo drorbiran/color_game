@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 const INITIAL_STATE = {
     colorToGuess: "",
-    colors: []
+    colors: ["rgb(0,0,0)","rgb(0,0,0)"]
 };
 
 export default function reduce(state = INITIAL_STATE, action = {}){
@@ -22,6 +22,8 @@ export default function reduce(state = INITIAL_STATE, action = {}){
             return state;
     }
 };
+
+
 
 //selectors
 export function getColorToGuess(state) {
