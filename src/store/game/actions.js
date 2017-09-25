@@ -1,11 +1,18 @@
 import * as types from './actionsTypes';
+import * as gameSelectors from './reducer'
 
 export const resetGame = () => {
-    const newColorToGuess = randomColor();
     const newColors = generateRandomColors(2);
+    const newColorToGuess = pickColor(newColors);
     return {
-        type: types.GAME_RESET,
-        payload: {newColorToGuess,newColors}
+        type: types.GAME_RESET, newColorToGuess, newColors
+    }
+};
+
+export const guessColor = (color) => {
+    return (dispatch,getState) => {
+        const gameWin = (gameSelectors.getColorToGuess(getState()) === color);
+        dispatch({type: types.COLOR_GUESSED, gameWin})
     }
 };
 
@@ -19,6 +26,21 @@ export const resetGame = () => {
 
 
 
+
+
+const generateRandomColors = (num) => {
+    const arr = [];
+    for (let i = 0; i < num; i++){
+        arr.push(randomColor())
+    }
+    return arr;
+};
+
+const pickColor = (colors) => {
+    const random = Math.floor(Math.random() * colors.length);
+    return colors[random];
+};
+
 const randomColor = () => {
     //pick a red from 0-255
     const r = Math.floor(Math.random() * 256);
@@ -27,14 +49,6 @@ const randomColor = () => {
     //pick a blue from 0-255
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`
-};
-
-const generateRandomColors = (num) => {
-    const arr = [];
-    for (let i = 0; i < num; i++){
-        arr.push(randomColor())
-    }
-    return arr;
 };
 
 

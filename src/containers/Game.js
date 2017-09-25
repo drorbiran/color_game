@@ -12,23 +12,24 @@ class Game extends Component {
     } //when render
 
     render() {
-        const {colorToGuess, colors} = this.props;
+        const {colorToGuess, colors, gameWin} = this.props;
         console.log(typeof colors[0]);
         return (
             <View>
                 <Text>{colorToGuess}</Text>
+                <Text>{(gameWin)? 'not playing' : 'playing'}</Text>
                 <Button
                     onPress={() => {this.props.dispatch(topicsActions.resetGame())}}
                     title ="reset"
                     color="#841584"
                 />
                 <Button
-                    onPress={() => console.log(colors[0])}
+                    onPress={() => this.props.dispatch(topicsActions.guessColor(colors[0]))}
                     title={colors[0]}
                     color={colors[0]}
                 />
                 <Button
-                    onPress={() => console.log(colors[1])}
+                    onPress={() => this.props.dispatch(topicsActions.guessColor(colors[1]))}
                     title={colors[1]}
                     color={colors[1]}
                 />
@@ -41,7 +42,8 @@ class Game extends Component {
 function mapStateToProps(state) {
     return {
         colorToGuess: gameSelectors.getColorToGuess(state),
-        colors: gameSelectors.getColors(state)
+        colors: gameSelectors.getColors(state),
+        gameWin:gameSelectors.getGameWinStatus(state)
     };
 }
 
