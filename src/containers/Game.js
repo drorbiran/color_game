@@ -8,18 +8,20 @@ import * as topicsActions from '../store/game/actions'
 class Game extends Component {
 
     componentWillMount(){
-        // this.props.dispatch(topicsActions.resetGame("#000000"));
+        this.props.dispatch(topicsActions.resetGame());
     } //when render
 
     render() {
+        const {colorToGuess, colors} = this.props;
         return (
             <View>
-                <Text>{this.props.colorToGuess}</Text>
+                <Text>{colorToGuess}</Text>
                 <Button
                     onPress={() => {this.props.dispatch(topicsActions.resetGame())}}
                     title ="reset"
                     color="#841584"
                 />
+                <Text>{colors}</Text>
             </View>
         );
     }
@@ -28,7 +30,8 @@ class Game extends Component {
 // which props do we want to inject, given the global store state?
 function mapStateToProps(state) {
     return {
-        colorToGuess: gameSelectors.colorToGuess(state)
+        colorToGuess: gameSelectors.getColorToGuess(state),
+        colors: gameSelectors.getColors(state)
     };
 }
 

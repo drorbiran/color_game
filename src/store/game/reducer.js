@@ -9,20 +9,26 @@ import _ from 'lodash';
 
 
 const INITIAL_STATE = {
-    colorToGuess: "#FFFFFF",
-    colors: ["#FFFFFF","#000000"]
+    colorToGuess: "",
+    colors: []
 };
 
 export default function reduce(state = INITIAL_STATE, action = {}){
     switch (action.type) {
         case types.GAME_RESET:
-             return {...state,colorToGuess: action.payload};
+             const {newColorToGuess,newColors} = action.payload;
+             return {...state,colorToGuess: newColorToGuess, colors: newColors};
         default:
             return state;
     }
 };
 
 //selectors
-export function colorToGuess(state) {
+export function getColorToGuess(state) {
     return state.game.colorToGuess;
 }
+
+export function getColors(state) {
+    return state.game.colors;
+}
+

@@ -1,10 +1,11 @@
 import * as types from './actionsTypes';
 
 export const resetGame = () => {
-    const newColor = randomColor();
+    const newColorToGuess = randomColor();
+    const newColors = generateRandomColors(2);
     return {
         type: types.GAME_RESET,
-        payload: newColor
+        payload: {newColorToGuess,newColors}
     }
 };
 
@@ -17,6 +18,14 @@ const randomColor = () => {
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`
 }
+
+const generateRandomColors = (num) => {
+    const arr = [];
+    for (let i = 0; i < num; i++){
+        arr.push(randomColor())
+    }
+    return arr;
+};
 
 
 // export const asyncAction = (text) => {
