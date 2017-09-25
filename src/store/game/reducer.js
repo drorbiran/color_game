@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 const INITIAL_STATE = {
     colorToGuess: "rgb(0,0,0)",
-    colors: ["rgb(0,0,0)","rgb(0,0,0)"],
+    colors: ["rgb(0,0,0)","rgb(1,1,1)"],
     gameWin: false
 };
 

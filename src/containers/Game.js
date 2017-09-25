@@ -11,6 +11,21 @@ class Game extends Component {
         this.props.dispatch(topicsActions.resetGame());
     } //when render
 
+    renderColors(){
+        return (
+            <View>
+                {this.props.colors.map((color) =>
+                    <Button
+                        onPress={() => this.props.dispatch(topicsActions.guessColor(color))}
+                        title={color}
+                        color={color}
+                        key={color}
+                    />
+                )}
+            </View>
+        )
+    }
+
     render() {
         const {colorToGuess, colors, gameWin} = this.props;
         console.log(typeof colors[0]);
@@ -23,16 +38,7 @@ class Game extends Component {
                     title ="reset"
                     color="#841584"
                 />
-                <Button
-                    onPress={() => this.props.dispatch(topicsActions.guessColor(colors[0]))}
-                    title={colors[0]}
-                    color={colors[0]}
-                />
-                <Button
-                    onPress={() => this.props.dispatch(topicsActions.guessColor(colors[1]))}
-                    title={colors[1]}
-                    color={colors[1]}
-                />
+                {this.renderColors()}
             </View>
         );
     }
