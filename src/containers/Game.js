@@ -16,7 +16,7 @@ class Game extends Component {
             <View>
                 <Text>{this.props.colorToGuess}</Text>
                 <Button
-                    onPress={() => {this.props.dispatch(topicsActions.resetGame("#000000"))}}
+                    onPress={() => {this.props.dispatch(topicsActions.resetGame())}}
                     title ="reset"
                     color="#841584"
                 />
