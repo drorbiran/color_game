@@ -28,7 +28,6 @@ class Game extends Component {
 
     render() {
         const {colorToGuess, colors, gameWin} = this.props;
-        console.log(typeof colors[0]);
         return (
             <View>
                 <Text>{colorToGuess}</Text>

@@ -17,10 +17,9 @@ const INITIAL_STATE = {
 export default function reduce(state = INITIAL_STATE, action = {}){
     switch (action.type) {
         case types.GAME_RESET:
-             const {newColorToGuess,newColors} = action;
-             return {...state,colorToGuess: newColorToGuess, colors: newColors, gameWin: false};
+             return {...state,colorToGuess: action.newColorToGuess, colors: action.newColors, gameWin: false};
         case types.COLOR_GUESSED:
-            return {...state, gameWin: action.gameWin};
+            return {...state, gameWin: action.gameWin, colors: action.newColors};
         default:
             return state;
     }

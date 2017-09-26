@@ -1,5 +1,6 @@
 import * as types from './actionsTypes';
 import * as gameSelectors from './reducer'
+import _ from 'lodash'
 
 export const resetGame = () => {
     const newColors = generateRandomColors(2);
@@ -10,9 +11,14 @@ export const resetGame = () => {
 };
 
 export const guessColor = (color) => {
+    console.log(color);
     return (dispatch,getState) => {
         const gameWin = (gameSelectors.getColorToGuess(getState()) === color);
-        dispatch({type: types.COLOR_GUESSED, gameWin})
+        let newColors = gameSelectors.getColors(getState());
+        if (!gameWin) {
+            newColors = newColors.filter((currentColor) => currentColor !== color);
+        }
+        dispatch({type: types.COLOR_GUESSED, gameWin, newColors})
     }
 };
 
