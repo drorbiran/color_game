@@ -15,9 +15,9 @@ export const guessColor = (color) => {
     return (dispatch,getState) => {
         const gameWin = (gameSelectors.getColorToGuess(getState()) === color);
         let newColors = gameSelectors.getColors(getState());
-        if (!gameWin) {
-            newColors = newColors.filter((currentColor) => currentColor !== color);
-        }
+        (!gameWin) ?
+            newColors = newColors.filter((currentColor) => currentColor !== color) :
+            newColors = newColors.map((currentColor) => color);
         dispatch({type: types.COLOR_GUESSED, gameWin, newColors})
     }
 };

@@ -12,20 +12,6 @@ class Game extends Component {
         this.props.dispatch(topicsActions.resetGame());
     } //when render
 
-    renderColors(){
-        return (
-            <View>
-                {this.props.colors.map((color) =>
-                    <Sqaure
-                        key={color}
-                        color={color}
-                        onPress={() => this.props.dispatch(topicsActions.guessColor(color))}
-                    />
-                )}
-            </View>
-        )
-    }
-
     render() {
         const {colorToGuess, colors, gameWin} = this.props;
         return (
@@ -51,7 +37,6 @@ class Game extends Component {
                     keyExtractor={item => item}
                     numColumns="2"
                 />
-                {/*{this.renderColors()}*/}
             </View>
         );
     }
