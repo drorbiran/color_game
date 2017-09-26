@@ -14,10 +14,13 @@ export const guessColor = (color) => {
     console.log(color);
     return (dispatch,getState) => {
         const gameWin = (gameSelectors.getColorToGuess(getState()) === color);
-        let newColors = gameSelectors.getColors(getState());
+        let colorsArray = gameSelectors.getColors(getState());
+        let newColors = [];
         (!gameWin) ?
-            newColors = newColors.filter((currentColor) => currentColor !== color) :
-            newColors = newColors.map((currentColor) => color);
+            newColors = colorsArray.filter((currentColor) => currentColor !== color) :
+            newColors = colorsArray.map((currentColor) => {
+            console.log(currentColor);
+            return color});
         dispatch({type: types.COLOR_GUESSED, gameWin, newColors})
     }
 };

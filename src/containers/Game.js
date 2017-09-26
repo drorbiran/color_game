@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import * as gameSelectors from '../store/game/reducer'
 import * as topicsActions from '../store/game/actions'
-import Sqaure from '../components/Square'
+import Square from '../components/Square'
 
 class Game extends Component {
 
@@ -20,21 +20,19 @@ class Game extends Component {
                 <Text>{(gameWin)? 'not playing' : 'playing'}</Text>
                 <Button
                     onPress={() => {this.props.dispatch(topicsActions.resetGame())}}
-                    title ="reset"
+                    title ={(gameWin)? "Play Again" : "New Colors"}
                     color="#841584"
                 />
                 <FlatList
                     data={colors}
                     renderItem = {({item}) => {
                         return (
-                            <Sqaure
+                            <Square
                                 color={item}
                                 onPress={() => this.props.dispatch(topicsActions.guessColor(item))}
                             />)
                         }
-
                     }
-                    keyExtractor={item => item}
                     numColumns="2"
                 />
             </View>
