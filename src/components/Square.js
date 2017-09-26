@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View,TouchableOpacity} from 'react-native';
+import {View,TouchableOpacity,Dimensions} from 'react-native';
 
 const Square = ({color, onPress}) => {
 
@@ -12,8 +12,8 @@ const Square = ({color, onPress}) => {
 
 styles = {
     containerStyle: {
-        width: 150,
-        height: 150,
+        width: Dimensions.get('window').width/2,
+        height: Dimensions.get('window').width/2,
         justifyContent: 'center',
         alignItems: 'center',
     },

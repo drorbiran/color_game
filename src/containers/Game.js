@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View,Text,Button} from 'react-native'
+import {View,Text,Button,FlatList} from 'react-native'
 import { connect } from 'react-redux';
 
 import * as gameSelectors from '../store/game/reducer'
@@ -37,7 +37,21 @@ class Game extends Component {
                     title ="reset"
                     color="#841584"
                 />
-                {this.renderColors()}
+                <FlatList
+                    data={colors}
+                    renderItem = {({item}) => {
+                        return (
+                            <Sqaure
+                                color={item}
+                                onPress={() => this.props.dispatch(topicsActions.guessColor(item))}
+                            />)
+                        }
+
+                    }
+                    keyExtractor={item => item}
+                    numColumns="2"
+                />
+                {/*{this.renderColors()}*/}
             </View>
         );
     }

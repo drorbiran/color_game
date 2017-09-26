@@ -3,7 +3,7 @@ import * as gameSelectors from './reducer'
 import _ from 'lodash'
 
 export const resetGame = () => {
-    const newColors = generateRandomColors(2);
+    const newColors = generateRandomColors(6);
     const newColorToGuess = pickColor(newColors);
     return {
         type: types.GAME_RESET, newColorToGuess, newColors
