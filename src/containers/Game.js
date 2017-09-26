@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import * as gameSelectors from '../store/game/reducer'
 import * as topicsActions from '../store/game/actions'
+import Sqaure from '../components/Square'
 
 class Game extends Component {
 
@@ -15,11 +16,10 @@ class Game extends Component {
         return (
             <View>
                 {this.props.colors.map((color) =>
-                    <Button
-                        onPress={() => this.props.dispatch(topicsActions.guessColor(color))}
-                        title={color}
-                        color={color}
+                    <Sqaure
                         key={color}
+                        color={color}
+                        onPress={() => this.props.dispatch(topicsActions.guessColor(color))}
                     />
                 )}
             </View>
