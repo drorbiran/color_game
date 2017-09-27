@@ -10,10 +10,10 @@ const Square = ({color, onPress}) => {
     )
 };
 
-styles = {
+const styles = {
     containerStyle: {
-        width: Dimensions.get('window').width/2,
-        height: Dimensions.get('window').width/2,
+        width: Dimensions.get('window').height/4.2,
+        height: Dimensions.get('window').height/4.2,
         justifyContent: 'center',
         alignItems: 'center',
     },

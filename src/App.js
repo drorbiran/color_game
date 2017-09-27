@@ -13,7 +13,7 @@ class App extends Component {
         const store = createStore(combineReducers(reducers),{},applyMiddleware(thunk));
         return (
             <Provider store={store}>
-                <View style={{flex: 1, paddingTop: 24}}>
+                <View style={{flex: 1}}>
                     <Game/>
                 </View>
             </Provider>
