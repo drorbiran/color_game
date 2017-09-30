@@ -9,6 +9,7 @@ import _ from 'lodash';
 
 
 const INITIAL_STATE = {
+    level: 4,
     colorToGuess: "rgb(0,0,0)",
     colors: ["rgb(0,0,0)","rgb(1,1,1)"],
     gameWin: false
@@ -17,14 +18,18 @@ const INITIAL_STATE = {
 export default function reduce(state = INITIAL_STATE, action = {}){
     switch (action.type) {
         case types.GAME_RESET:
-             return {...state,colorToGuess: action.newColorToGuess, colors: action.newColors, gameWin: false};
+             return {...state,
+                    colorToGuess: action.newColorToGuess,
+                    colors: action.newColors,
+                    gameWin: false,
+                    level: action.level
+                    };
         case types.COLOR_GUESSED:
             return {...state, gameWin: action.gameWin, colors: action.newColors};
         default:
             return state;
     }
 };
-
 
 
 //selectors
@@ -40,3 +45,6 @@ export function getGameWinStatus(state) {
     return state.game.gameWin;
 }
 
+export function getLevel(state) {
+    return state.game.level;
+}

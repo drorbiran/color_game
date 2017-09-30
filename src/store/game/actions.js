@@ -2,11 +2,11 @@ import * as types from './actionsTypes';
 import * as gameSelectors from './reducer'
 import _ from 'lodash'
 
-export const resetGame = () => {
-    const newColors = generateRandomColors(6);
+export const resetGame = (level) => {
+    const newColors = generateRandomColors(level);
     const newColorToGuess = pickColor(newColors);
     return {
-        type: types.GAME_RESET, newColorToGuess, newColors
+        type: types.GAME_RESET, newColorToGuess, newColors, level
     }
 };
 
